@@ -1,5 +1,3 @@
-/**Această linie de cod importă clasa Player din modulul @vimeo/player. Această clasă va fi utilizată pentru a controla videoclipul Vimeo încorporat în elementul iframe. */
-let throttle = require('lodash.throttle');
 /**Aici se importă funcția throttle din biblioteca lodash.throttle. Funcția throttle este utilizată pentru a limita numărul de apeluri ale unei funcții, astfel încât să nu fie apelată în mod excesiv. */
 const iframe = document.querySelector('iframe');
 const player = newPlayer(iframe);
