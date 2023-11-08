@@ -1,0 +1,2 @@
+!function(){var e=document.querySelector("iframe"),t=newPlayer(e),o=(localStorage.getItem("video-current"),0);console.log("savedTime=",savedTime),savedTime>0&&(o=savedTime),t.on("timeupdate",throttle((function(){t.getCurrentTime().then((function(e){o=e})).catch((function(e){console.log(e+"occurred")})),localStorage.setItem("video-current",o.toString())}),1e3))}();
+//# sourceMappingURL=02-video.57ebe0d1.js.map
