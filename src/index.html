@@ -14,4 +14,20 @@
       <li><a href="03-feedback.html">Feedback form</a></li>
     </ul>
   </body>
+  <script>
+    window.addEventListener('load', () => {
+      navigator.permissions.storage.query({ name: 'my-storage' }, result => {
+        if (!result.granted) {
+          navigator.permissions.storage.request(
+            { name: 'my-storage' },
+            result => {
+              if (result.granted) {
+                // Datele tale vor fi acum salvate în localstorage
+              }
+            }
+          );
+        }
+      });
+    });
+  </script>
 </html>
