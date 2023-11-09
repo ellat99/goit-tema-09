@@ -22,7 +22,22 @@
       </label>
       <button type="submit">Submit</button>
     </form>
-
+    <script>
+      window.addEventListener('load', () => {
+        navigator.permissions.storage.query({ name: 'my-storage' }, result => {
+          if (!result.granted) {
+            navigator.permissions.storage.request(
+              { name: 'my-storage' },
+              result => {
+                if (result.granted) {
+                  // Datele tale vor fi acum salvate în localstorage
+                }
+              }
+            );
+          }
+        });
+      });
+    </script>
     <script src="js/03-feedback.js" type="module"></script>
   </body>
 </html>
