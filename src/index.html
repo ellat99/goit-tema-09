@@ -16,16 +16,24 @@
   </body>
   <script>
     window.addEventListener('load', () => {
-      navigator.permissions.storage.query({ name: 'my-storage' }, result => {
-        if (!result.granted) {
-          navigator.permissions.storage.request(
-            { name: 'my-storage' },
-            result => {
-              if (result.granted) {
-                // Datele tale vor fi acum salvate în localstorage
-              }
+      navigator.permissions.query({ name: 'storage' }).then(result => {
+        if (result.state === 'granted') {
+          // Permisiunea pentru stocare este acordată.
+          // Aici poți scrie în local storage.
+          console.log('Permisiune acordată pentru stocare.');
+        } else {
+          // Permisiunea pentru stocare nu este acordată.
+          // Solicită permisiuni.
+          navigator.permissions.request({ name: 'storage' }).then(result => {
+            if (result.state === 'granted') {
+              // Permisiunea pentru stocare a fost acordată.
+              // Aici poți scrie în local storage.
+              console.log('Permisiune acordată pentru stocare.');
+            } else {
+              // Permisiunea pentru stocare este respinsă.
+              console.log('Permisiune respinsă pentru stocare.');
             }
-          );
+          });
         }
       });
     });
